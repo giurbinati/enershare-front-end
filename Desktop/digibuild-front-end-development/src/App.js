@@ -28,7 +28,7 @@ function App() {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-        //marginLeft: `-${drawerWidth}vh`,
+      //marginLeft: `-${drawerWidth}vh`,
       ...(open && {
         transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.easeOut,
@@ -55,7 +55,7 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <Navbar auth={auth} setAuth={setAuth} open={open} setOpen={setOpen}/>
+      <Navbar auth={auth} setAuth={setAuth} open={open} setOpen={setOpen} />
       <Main open={open}>
         {/* <Drawer open={open} setOpen={setOpen} /> */}
         {/* {auth && <Dashboard />} */}
@@ -64,7 +64,16 @@ function App() {
             path="/"
             element={
               <PrivateRoute token={setAuth}>
-                 <Dashboard />
+                <Dashboard />
+                {/* <Home/> */}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path=""
+            element={
+              <PrivateRoute token={setAuth}>
+                <Dashboard />
                 {/* <Home/> */}
               </PrivateRoute>
             }
@@ -76,7 +85,7 @@ function App() {
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Main>
-      <Footer open={open}/>
+      <Footer open={open} />
     </BrowserRouter>
 
 
