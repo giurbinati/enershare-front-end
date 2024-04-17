@@ -116,14 +116,14 @@ const Login = () => {
 							...values,
 							successMessage: response.data.message,
 						})
-						redirectToHome();
+					redirectToHome();
 					}
 					else {
 						setValues({
-							...values,
-							successMessage: "email or password error",
+						  ...values,
+						  successMessage: "email or password error",
 						});
-					}
+					  }
 					sessionStorage.setItem("ACCESS_TOKEN_NAME", response.data.token);
 				})
 				.catch(function (error) {
