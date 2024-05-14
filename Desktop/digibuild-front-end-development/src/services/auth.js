@@ -10,14 +10,15 @@ const config = {
 const API_URL = config.host + "/auth/";
 
 class AuthService {
-    /* constructor() {
+     constructor() {
         this.role = null;
-        this.dblStructure = null;
+        /* this.dblStructure = null; */
     }
- */
+ 
     async login(data) {
         console.log(API_URL)
         const response = await axios.post(API_URL + "login", data).then(response => {
+            //console.log('login:', response)
             /* const token = response.data.data; // Assume che il token sia incluso nella chiave "data"
             const decodedToken = jwtDecode(token);
     
@@ -31,7 +32,8 @@ class AuthService {
                 this.dblStructure = decodedToken.dblStructure;
                 console.log("Pilot:", this.dblStructure);
             } */
-    
+            this.role = response.data.data.role;
+            console.log('role', this.role);
             return response;
         }).catch(error => {
             // Gestione degli errori
@@ -46,9 +48,10 @@ class AuthService {
         return response;
     };
     
-    /* getRole() {
+     getRole() {
         return this.role;
     }
+    /*
     getDblStructure() {
         return this.dblStructure;
     } */

@@ -18,6 +18,7 @@ import { omit } from 'lodash';
 // import { ACCESS_TOKEN_NAME, USERNAME } from '../constants/apiConstants';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
+import Keycloak from '../services/keycloak'
 
 const Login = () => {
 	useEffect(() => {
@@ -49,7 +50,7 @@ const Login = () => {
 			...values,
 			[id]: value,
 		})
-		console.log(values)
+		//console.log(values)
 		// setState(prevState => ({
 		//     ...prevState,
 		//     [id]: value
@@ -100,7 +101,14 @@ const Login = () => {
 	// 	return expression.test(String(email).toLowerCase());
 	//   }
 	const handleSubmitClick = (e) => {
-		console.log("send data")
+		/* Keycloak.login().then(tokenResponse => {
+			console.log('token', tokenResponse);
+			
+			// Il resto del codice...
+		}).catch(error => {
+			console.error('Error in login:', error);
+			// Trattare l'errore...
+		}); */
 		e.preventDefault();
 		if (Object.keys(errors).length === 0 && Object.keys(values).length !== 0) {
 			const payload = {
@@ -124,10 +132,11 @@ const Login = () => {
 							successMessage: "email or password error",
 						});
 					}
+					//console.log(response.data.token)
 					sessionStorage.setItem("ACCESS_TOKEN_NAME", response.data.token);
 				})
 				.catch(function (error) {
-					console.log(error);
+					//console.log(error);
 					setValues({
 						...values,
 						successMessage: "email or password error",
@@ -142,7 +151,7 @@ const Login = () => {
 
 	}
 	const redirectToHome = () => {
-		console.log("redirect")
+		//console.log("redirect")
 
 		navigate('/')
 		//this.props.history.push('/')
@@ -216,16 +225,16 @@ const Login = () => {
 								}
 							</Grid>
 							<Grid item>
-								<Button onClick={handleSubmitClick}
+								<Button onClick={handleSubmitClick} //Button onClick={redirectToHome}
 									style={{ 'background': 'linear-gradient(to right, #1A88C9, #2AB683)' }}
 									disabled={!values.email || !values.password} type="submit" fullWidth variant="contained">
 									Sign In
 								</Button>
 							</Grid>
-							<Grid item>
+							{/* <Grid item>
 								<Typography>Need an account? <a href="/sign_up">Sign Up</a></Typography>
 							</Grid>
-
+ */}
 							{values.successMessage && (
 								<Grid item>
 									<div className="alert alert-success" style={{ maxWidth: "100%", display: values.successMessage ? 'block' : 'none' }} role="alert">

@@ -80,8 +80,8 @@ function App() {
           />
           <Route path="/login" element={<Login />}>
           </Route>
-          <Route path="/sign_up" element={<SignUp />}>
-          </Route>
+          {/* <Route path="/sign_up" element={<SignUp />}>
+          </Route> */}
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Main>

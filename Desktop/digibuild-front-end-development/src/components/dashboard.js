@@ -116,14 +116,16 @@ export default function Dashboard() {
         setValueSubSub3(0);
     };
 
-  /*   const [userRole, setUserRole] = useState("");
-    const [userDblStructure, setUserDblStructure] = useState("");
+    const [userRole, setUserRole] = useState("");
 
     useEffect(() => {
         // Nel componente dove hai bisogno del ruolo
         setUserRole(AuthService.getRole());
+        console.log('dash', userRole)
     }, []); // Dipendenza vuota per eseguire useEffect solo una volta
 
+
+/*const [userDblStructure, setUserDblStructure] = useState("");
     useEffect(() => {
         // Nel componente dove hai bisogno della struttura
         setUserDblStructure(AuthService.getDblStructure());
@@ -142,7 +144,7 @@ export default function Dashboard() {
                             <Tab label={<Typography variant="body1" fontWeight="bold">Building Operation and Use</Typography>} {...a11yProps(3)} />
                             <Tab label={<Typography variant="body1" fontWeight="bold">Building Performance</Typography>} {...a11yProps(4)} />
                             <Tab label={<Typography variant="body1" fontWeight="bold">Building Documentation</Typography>} {...a11yProps(5)} /> {/* Building Documentation BIM */}
-                            {/* <Tab label={<Typography variant="body1" fontWeight="bold">Bprova</Typography>} {...a11yProps(6)} /> {/* Building Documentation BIM */} */}
+                            {/* <Tab label={<Typography variant="body1" fontWeight="bold">Bprova</Typography>} {...a11yProps(6)} /> {/* Building Documentation BIM */}
                         </Tabs>
                     </Box>
                 </Grid>
